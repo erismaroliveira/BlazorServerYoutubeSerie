@@ -1,0 +1,35 @@
+﻿@page "/Attributes"
+
+<h3>Attributes</h3>
+
+<input type="text" @attributes="DefaultAttributes" />
+<br />
+<input type="text" @attributes="DefaultAttributes" />
+<br />
+<input type="text" @attributes="DefaultAttributes" />
+<br />
+<b>Without attributes directive:</b>
+<br />
+<input type="text" maxlength="@MaxLength"
+    placeholder="@Placeholder" 
+    required="@Required" 
+    size="@Size"
+    class="@Class" />
+
+
+@code {
+    public int MaxLength { get; set; } = 10;
+    public string Placeholder { get; set; } = "Digite um valor";
+    public string Required { get; set; } = "required";
+    public int Size { get; set; } = 10;
+    public string Class { get; set; } = "custom-input";
+
+    public Dictionary<string, object> DefaultAttributes { get; set; } = new Dictionary<string, object>()
+    {
+        { "maxlenth", 10 },
+        { "placeholder", "Digite um valor" },
+        { "required", "required" },
+        { "size", 10 },
+        { "class", "custom-input" }
+    };
+}

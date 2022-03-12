@@ -1,0 +1,28 @@
+﻿@page "/"
+@page "/Index"
+@page "/Index/{value}"
+
+<img src="/images/blazor-logo.png" class="custom-image" />
+<br />
+<MyComponent @ref="_myComponent" Title="My First Component - Child Component"></MyComponent>
+
+@if(Value != null)
+{
+    <br />
+    <p><b>Value: </b>@Value</p>
+}
+<br />
+<button @onclick="ChangeCustomMessage">Set Custom Message</button>
+
+@code {
+
+    private MyComponent _myComponent { get; set; }
+
+    [Parameter]
+    public string Value { get; set; }
+
+    private void ChangeCustomMessage()
+    {
+        _myComponent.ShowMessage("The message has changed :)");
+    }
+}
